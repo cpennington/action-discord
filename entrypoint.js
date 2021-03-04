@@ -48,6 +48,7 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
           { ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) }
         )
       );
+      console.log({ embedsObject });
     } catch (parseErr) {
       console.error('Error parsing DISCORD_EMBEDS :' + parseErr);
       process.exit(1);
