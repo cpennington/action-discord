@@ -43,12 +43,11 @@ if (argv._.length === 0 && !process.env.DISCORD_EMBEDS) {
   let embedsObject;
   if (process.env.DISCORD_EMBEDS) {
     try {
-      embedsObject = JSON.parse(
-        _.template(process.env.DISCORD_EMBEDS)(
-          { ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) }
-        )
+      embedString = _.template(process.env.DISCORD_EMBEDS)(
+        { ...process.env, EVENT_PAYLOAD: JSON.parse(eventContent) }
       );
-      console.log({ embedsObject });
+      console.log({ embedString });
+      embedsObject = JSON.parse(embedString);
     } catch (parseErr) {
       console.error('Error parsing DISCORD_EMBEDS :' + parseErr);
       process.exit(1);
